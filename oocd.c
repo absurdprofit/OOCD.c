@@ -1,19 +1,12 @@
 #include<stdio.h>
+
 #include<stdlib.h>
 
 struct file{
-	/*__repr__()
-	__init__()*
-	read()*
-	filename*
-	seek()
-	truncate()*
-	close()*
-	write()*
-	read()**/
-	FILE * ptr;//file pointer
+	
+	FILE * ptr;//This is a file pointer
 	//char * (*center)(char * a, int b)
-	const char * (*read)(FILE * f);//read entire file
+	const char * (*read)(FILE * f);//Here, you must read entire file
 	void * (*close)(FILE * f);
 	void * (*truncate)(struct file * f);
 	void * (*write)(FILE * f, const char * string);
@@ -45,7 +38,7 @@ void * truncate(struct file * f){
 	fclose(f -> ptr);
 	FILE*ptr = fopen(f -> filename, "w");
 	if(ptr == NULL){
-		printf("File Not Found!");
+		printf("Result: File is Not Found!");
 	}
 	else{
 		fprintf(ptr, "%s", "");
@@ -59,7 +52,7 @@ void * write(FILE * f, const char * string){
 }
 
 void * write_err(FILE * f, const char * string){
-	printf("\nCannot Write To File In Read Mode!\n");
+	printf("\nHere, Cannot Write To File In Read Mode!\n");
 }
 
 void __init__(struct file * f, const char * mode, const char * filename){
